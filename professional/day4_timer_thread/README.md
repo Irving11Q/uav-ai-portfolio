@@ -1,4 +1,4 @@
-# Day 4: QTimer Periodic Refresh & QThread Background Task
+# QTimer Periodic Refresh & QThread Background Task
 
 Demo of two PySide6 fundamentals that keep a desktop app responsive: periodic refresh with `QTimer`, and long-running work offloaded to `QThread` with progress reported back via a `Signal`.
 

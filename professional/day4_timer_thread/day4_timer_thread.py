@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Day4 Timer + Thread")
+        self.setWindowTitle("定时刷新与后台任务")
         self.resize(420, 300)
 
         central = QWidget(self)

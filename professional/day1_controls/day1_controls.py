@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Day3 常用控件展示")
+        self.setWindowTitle("上位机控件演示")
         self.resize(560, 520)
 
         central = QWidget(self)
@@ -48,7 +48,7 @@ class MainWindow(QMainWindow):
         self.line_edit.setPlaceholderText("在这里输入，点按钮会显示到标签上")
         layout.addWidget(self.line_edit)
 
-        # 下拉框：提供可选项（示例为无人机飞行参数）
+        # 下拉框：提供可选项
         layout.addWidget(QLabel("3. 这是 QComboBox 下拉框：从选项里选一个"))
         self.combo = QComboBox()
         self.combo.addItems(["电池电量", "电机电流", "机身温度", "飞行高度"])

@@ -1,4 +1,4 @@
-# Day 1: PySide6 Widgets & Layouts
+# PySide6 Widgets & Layouts
 
 First-day demo of PySide6 desktop GUI basics: common widgets, layout nesting, and signals/slots.
 
