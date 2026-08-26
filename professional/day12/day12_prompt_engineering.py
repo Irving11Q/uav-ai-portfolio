@@ -1,18 +1,40 @@
 """
-Day 12: Prompt Engineering
+Prompt 工程演示：4 个控制大模型输出的技巧。
 
-演示 4 个控制大模型输出的技巧：
-1. system prompt - 给模型定人设
-2. few-shot - 给例子让模型照着格式回答
-3. JSON 输出 - 让模型返回结构化数据
-4. temperature - 控制模型输出的发散程度
+- system prompt：给模型定人设，回答更有结构
+- few-shot：给 2-3 个例子，模型照着格式回答
+- JSON 输出：让模型返回结构化数据，程序直接解析
+- temperature：控制模型的发散程度（0=稳定，1.5=发散）
 
-场景：无人机飞行数据解读（电压,电流,温度,高度）
+场景：无人机飞行数据解读（电压,电流,温度,高度）。
+
+依赖：需要配置 DEEPSEEK_API_KEY 环境变量，或复制 deepseek_client.py 到同目录。
 """
 
 import json
-from day11_api_wrapper import DeepSeekClient
+import os
+import sys
+from pathlib import Path
 
+# 动态导入 deepseek_client（支持从上级目录或同目录导入）
+PROJECT_ROOT = Path(__file__).parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+try:
+    from day11_api_client.deepseek_client import DeepSeekClient
+except ImportError:
+    try:
+        from deepseek_client import DeepSeekClient
+    except ImportError:
+        print("错误：找不到 deepseek_client.py")
+        print("请将 day11_api_client/deepseek_client.py 复制到本目录")
+        sys.exit(1)
+
+API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
+if not API_KEY:
+    print("未找到环境变量 DEEPSEEK_API_KEY，请先配置后重试。")
+    sys.exit(1)
 
 client = DeepSeekClient()
 
@@ -20,7 +42,7 @@ FLIGHT_DATA = "24.6,1.2,38.5,120"  # 电压24.6V, 电流1.2A, 温度38.5°C, 高
 
 
 def demo_system_prompt():
-    """对比没有 system prompt 和有 system prompt 的回答差异"""
+    """对比没有 system prompt 和有 system prompt 的回答差异。"""
     question = f"请解读这行飞行数据：{FLIGHT_DATA}"
 
     print("【实验 1】system prompt：没定人设 vs 定了人设\n")
@@ -48,7 +70,7 @@ def demo_system_prompt():
 
 
 def demo_few_shot():
-    """对比不给例子和给例子的输出格式差异"""
+    """对比不给例子和给例子的输出格式差异。"""
     print("=" * 50)
     print("【实验 2】few-shot：给例子让模型照格式回答")
     print("=" * 50)
@@ -78,7 +100,7 @@ def demo_few_shot():
 
 
 def demo_json_output():
-    """让模型输出 JSON，程序直接解析"""
+    """让模型输出 JSON，程序直接解析。"""
     print("=" * 50)
     print("【实验 3】JSON 输出：让模型返回结构化数据")
     print("=" * 50)
@@ -112,7 +134,7 @@ def demo_json_output():
 
 
 def demo_temperature():
-    """对比 temperature=0 和 =1.5 的差异"""
+    """对比 temperature=0 和 =1.5 的差异。"""
     print("=" * 50)
     print("【实验 4】temperature：稳定 vs 发散")
     print("=" * 50)
@@ -135,7 +157,7 @@ def demo_temperature():
     print("  1.0~1.5 = 创意任务（要浪）\n")
 
 
-def main():
+def main() -> None:
     print("Day 12: Prompt Engineering 实验\n")
     demo_system_prompt()
     demo_few_shot()

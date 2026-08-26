@@ -1,33 +1,83 @@
-# Day 12: Prompt Engineering
+# Prompt Engineering: System, Few-Shot, JSON, Temperature
 
-通过 4 个实验学习控制大模型输出的技巧。
+Four hands-on experiments showing how to control LLM output through prompt design. Covers the core techniques used in real-world AI applications: setting a system persona, giving examples (few-shot), requesting structured JSON output, and tuning temperature.
 
-## 代码文件
+## What's inside
 
-| 文件 | 说明 |
-|---|---|
-| `day12_prompt_engineering.py` | 4 个 Prompt 技巧演示：system prompt、few-shot、JSON 输出、temperature |
+- `day12_prompt_engineering.py` — four side-by-side experiments:
+  - **System prompt**: compare "no persona" vs "expert persona" to see how the output structure changes
+  - **Few-shot**: give the model 2 examples so it follows a consistent format
+  - **JSON output**: request structured JSON that your code can parse directly
+  - **Temperature**: compare `0` (stable/deterministic) vs `1.5` (divergent/creative)
 
-## 运行
+## Requirements
+
+- Python 3.12
+- requests
 
 ```bash
-cd w3_ai
+pip install requests
+```
+
+## Setup
+
+Set your API key as an environment variable (default uses GLM, can switch to DeepSeek):
+
+```
+设置 → 系统 → 关于 → 高级系统设置 → 环境变量 → 新建
+名称: ZHIPU_API_KEY  (or DEEPSEEK_API_KEY)
+值:   your-key-here
+```
+
+Edit `day11_api_wrapper.py` to switch between providers if needed.
+
+## Run
+
+```bash
 python day12_prompt_engineering.py
 ```
 
-会依次运行 4 个对比实验，每个都输出提示词和模型回答。
+The program runs all four experiments sequentially, printing both the prompt and the model response for comparison.
 
-## 学到的技巧
+## Key techniques
 
-1. **System Prompt** - 给模型定人设，回答更专业、有结构
-2. **Few-shot** - 给 2-3 个例子，模型会照着格式输出
-3. **JSON 输出** - 让模型返回结构化数据，程序直接解析
-4. **Temperature** - 控制模型的发散程度（0=稳定，1.5=发散）
+**System prompt** — Set the model's persona and response rules:
 
-## 场景
+```python
+messages = [
+    {"role": "system", "content": "You are a UAV data analyst with 10 years experience. Answer concisely: 1) conclusion, 2) reasoning, 3) suggestion."},
+    {"role": "user", "content": "Analyze: 24.6,1.2,38.5,120"},
+]
+```
 
-用无人机飞行数据（电压/电流/温度/高度）做演示，接续第 2 周的串口数据格式。
+**Few-shot** — Show 2-3 examples, the model imitates the format:
 
----
+```python
+messages = [
+    {"role": "user", "content": "Data: 23.1,1.5,42.0,95. Normal or abnormal?"},
+    {"role": "assistant", "content": "Normal. Voltage 23.1V above 22V threshold."},
+    {"role": "user", "content": question},
+]
+```
 
-*AI 应用开发学习第 3 周内容*
+**JSON output** — Request structured data for programmatic use:
+
+```python
+messages = [
+    {"role": "system", "content": "Output only JSON: {\"voltage\": 24.6, \"risk\": \"low\", \"suggestion\": \"...\"}"},
+    {"role": "user", "content": "Data: 24.6,1.2,38.5,120"},
+]
+data = json.loads(client.chat(messages))
+```
+
+**Temperature** — Control randomness:
+
+| Value | Use case |
+|---|---|
+| 0.0-0.3 | Facts, code, structured output (want stable) |
+| 0.5-0.8 | Daily conversation, Q&A (balanced) |
+| 1.0-1.5 | Creative writing, naming (want variety) |
+
+## About
+
+Part of my learning series toward building a **UAV energy-consumption prediction AI system**. Full roadmap: see repo root `README.md`.
