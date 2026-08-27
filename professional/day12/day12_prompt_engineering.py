@@ -8,7 +8,7 @@ Prompt 工程演示：4 个控制大模型输出的技巧。
 
 场景：无人机飞行数据解读（电压,电流,温度,高度）。
 
-依赖：需要配置 DEEPSEEK_API_KEY 环境变量，或复制 deepseek_client.py 到同目录。
+依赖：需要配置 DEEPSEEK_API_KEY 环境变量，或复制 day11_api_wrapper.py 到同目录。
 """
 
 import json
@@ -16,19 +16,19 @@ import os
 import sys
 from pathlib import Path
 
-# 动态导入 deepseek_client（支持从上级目录或同目录导入）
+# 动态导入 day11_api_wrapper（支持从上级目录或同目录导入）
 PROJECT_ROOT = Path(__file__).parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 try:
-    from day11_api_client.deepseek_client import DeepSeekClient
+    from day11_api_client.day11_api_wrapper import DeepSeekClient
 except ImportError:
     try:
-        from deepseek_client import DeepSeekClient
+        from day11_api_wrapper import DeepSeekClient
     except ImportError:
-        print("错误：找不到 deepseek_client.py")
-        print("请将 day11_api_client/deepseek_client.py 复制到本目录")
+        print("错误：找不到 day11_api_wrapper.py")
+        print("请将 day11_api_client/day11_api_wrapper.py 复制到本目录")
         sys.exit(1)
 
 API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")

@@ -9,7 +9,7 @@ Day 13 of the "UAV AI Application Development" series. Shows how to make a large
   - sends a `tools` spec so the model knows what it can call;
   - parses the model's `tool_calls`, executes the matching function, and returns the result with `role="tool"` + `tool_call_id`;
   - runs a 2-round loop (ask → execute tool → ask again for the final answer);
-  - reuses `DeepSeekClient` from `day11_api_client/deepseek_client.py` (same pattern as day12).
+  - reuses `DeepSeekClient` from `day11_api_client/day11_api_wrapper.py` (same pattern as day12).
 
 ## Requirements
 

@@ -4,7 +4,7 @@ A reusable Python client for the DeepSeek chat API. Wraps request sending, strea
 
 ## What's inside
 
-- `deepseek_client.py` — the `DeepSeekClient` class with:
+- `day11_api_wrapper.py` — the `DeepSeekClient` class with:
   - `chat(messages)` — normal request, returns the full answer;
   - `chat_stream(messages)` — streaming output, yields text piece by piece (typewriter effect);
   - automatic retry with exponential backoff on rate-limit (429) and server errors (5xx);
@@ -34,7 +34,7 @@ Then reopen your terminal.
 ## Run
 
 ```bash
-python deepseek_client.py
+python day11_api_wrapper.py
 ```
 
 Demonstrates both normal chat and streaming chat.
@@ -42,7 +42,7 @@ Demonstrates both normal chat and streaming chat.
 ## Usage
 
 ```python
-from deepseek_client import DeepSeekClient
+from day11_api_wrapper import DeepSeekClient
 
 client = DeepSeekClient()
 messages = [
