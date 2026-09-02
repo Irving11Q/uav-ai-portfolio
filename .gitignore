@@ -4,3 +4,6 @@ __pycache__/
 .idea/
 .vscode/
 .DS_Store
+
+# 向量数据库产物（运行 day17 后生成的本地数据，不该进仓库）
+chroma_db/
