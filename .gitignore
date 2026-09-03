@@ -5,5 +5,11 @@ __pycache__/
 .vscode/
 .DS_Store
 
-# 向量数据库产物（运行 day17 后生成的本地数据，不该进仓库）
+# 向量数据库产物（运行各 day 脚本后生成的本地数据，不该进仓库）
 chroma_db/
+chroma_db_day18/
+chroma_db*/
+
+# 评测脚本跑出来的临时产物
+_eval_out.txt
+_verify.txt
