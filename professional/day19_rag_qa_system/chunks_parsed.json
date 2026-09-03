@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "text": "# 无人机锂电池使用手册",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 1,
+    "text": "## 1. 电池规格\n\n本机采用 3S 锂电池，单节额定电压 3.7V，整机额定电压 11.1V。\n\n电池容量 5200mAh，放电倍率 20C，最大持续放电电流 104A。\n\n电池重量约 420g，工作温度范围 -10℃~60℃。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 2,
+    "text": "## 2. 电压管理\n\n电压低于 9.6V 时必须尽快降落，否则电池会因过放而损坏。\n\n单节电压低于 3.2V 属于深度过放，会永久损伤电芯。\n\n飞控应实时监控电压，低电压报警阈值建议设为 10.2V。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 3,
+    "text": "## 3. 电流与功耗\n\n悬停状态下整机电流约 12A，全速爬升时电流可达 28A。\n\n电流越大，电池消耗越快，续航越短。\n\n额定功耗：悬停约 133W，最大功率约 310W。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 4,
+    "text": "## 4. 温度管理\n\n锂电池最佳工作温度是 20℃~40℃。\n\n若温度超过 55℃，应尽快降落散热；超过 60℃ 会加速老化，甚至鼓包起火。\n\n低温环境（低于 0℃）时电池内阻增大，续航会明显下降。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 5,
+    "text": "## 5. 续航估算\n\n理论续航 = 容量 ÷ 平均电流 ≈ 25 分钟。\n\n风速大或负载重时续航明显缩短；低温也会缩短续航。\n\n实际飞行建议预留 20% 电量返航。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 6,
+    "text": "## 6. 充电与维护\n\n建议 1C 电流充电（即 5.2A），禁止过放。\n\n长期存放时把电池充到单节 3.8V（存储电压），每 3 个月补电一次。\n\n电池鼓包、漏液应立即停止使用并妥善处理。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  },
+  {
+    "id": 7,
+    "text": "## 7. 安全预警\n\n若飞行中电压跌落过快，或电池温度骤升超过 50℃，应触发返航指令。\n\n起飞前检查电池外观、插头接触和电量，确保安全。",
+    "source": "uav_battery_manual.md",
+    "chunk_strategy": "by_heading"
+  }
+]
