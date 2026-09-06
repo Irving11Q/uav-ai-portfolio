@@ -13,3 +13,9 @@ chroma_db*/
 # 评测脚本跑出来的临时产物
 _eval_out.txt
 _verify.txt
+
+# 推送辅助脚本（含本机凭据读取逻辑，只在本地用，不进仓库）
+_push_helper.py
+_push_proxy_only.py
+_push_via_api.py
+_push.log
