@@ -14,6 +14,9 @@ chroma_db*/
 _eval_out.txt
 _verify.txt
 
+# Day23 画图工具生成的 png（运行时产物，跑一次就有）
+_out_day23b/
+
 # 推送辅助脚本（含本机凭据读取逻辑，只在本地用，不进仓库）
 _push_helper.py
 _push_proxy_only.py
