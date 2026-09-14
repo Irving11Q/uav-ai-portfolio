@@ -17,6 +17,9 @@ _verify.txt
 # Day23 画图工具生成的 png（运行时产物，跑一次就有）
 _out_day23b/
 
+# Day27 实时巡检产物（逐帧 jsonl + 巡检报告，跑一次就有一批）
+_out_day27/
+
 # 推送辅助脚本（含本机凭据读取逻辑，只在本地用，不进仓库）
 _push_helper.py
 _push_proxy_only.py
