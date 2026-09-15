@@ -5,8 +5,9 @@
 > 每个 `day` 都是**可运行、自包含**的最小例子，配英文 `README` 讲清「为什么这样写」。
 
 **目标岗位**：AI 应用 / AI 工程岗（非算法岗）—— 考 RAG 全链路、Agent、工程落地、效果评测。
-**技术栈**：Python · PySide6 · pyserial · requests · DeepSeek / 智谱 GLM（OpenAI 兼容）·
-sentence-transformers(bge) · Chroma · LangChain · LangGraph · pandas · matplotlib。
+**技术栈**：Python · PySide6 · pyqtgraph · pyserial · FastAPI · uvicorn · requests ·
+DeepSeek / 智谱 GLM（OpenAI 兼容）· sentence-transformers(bge) · Chroma · LangChain ·
+LangGraph · pandas · matplotlib。
 
 ---
 
@@ -19,15 +20,16 @@ sentence-transformers(bge) · Chroma · LangChain · LangGraph · pandas · matp
 | **W3 大模型 API** | `day10`–`day14` | 怎么调 LLM | 首调 DeepSeek → 自封装 Client → Function Calling（Agent 基石）→ 多模型对比 |
 | **W4 RAG 全链路** | `day15`–`day20` | 怎么让模型「不瞎编」 | 朴素 RAG → 切块策略 → Chroma 向量库 → 检索调优 → 带引用的 QA → LangChain 重写 |
 | **W5 Agent** | `day21`–`day24` | 怎么让模型「自己干活」 | 单 Agent → 工具即检索(CRAG) → 数据分析 Agent → 多 Agent 协作 |
+| **W6 服务化** | `day25`–`day29` | 怎么把原型变成系统 | FastAPI 服务化 → 桌面客户端 → 实时巡检(规则+续航预测) → 后台采集服务 → 实时面板 |
 
 **贯穿线索**：W2 那 23 行真实串口飞行日志、W4 那本《电池手册》，被 W3/W4/W5 反复复用——
 同一个数据，从「画出来」到「喂给模型回答」，这就是一个 AI 应用从原型到落地的全过程。
 
 ---
 
-## 面试最该讲的 4 个项目（深度优先）
+## 面试最该讲的 5 个项目（深度优先）
 
-按「讲透 > 学新」原则，下面 4 个是可以展开讲 20 分钟以上的：
+按「讲透 > 学新」原则，下面 5 个是可以展开讲 20 分钟以上的：
 
 1. **`day23_data_agent` + `day24_multi_agent`（W5）** — 数据分析 / 多 Agent。
    核心论点：**LLM 算数不可靠、但「决定算什么」很擅长**；对照组实验证明模型数数会错(3)、工具算数对(5)；
@@ -38,6 +40,13 @@ sentence-transformers(bge) · Chroma · LangChain · LangGraph · pandas · matp
    核心论点：切块质量决定检索上限；守住统一检索接口，换真检索只改一行；实测 Top-1 5/6、Top-3 6/6、离题拒答 3/3。
 4. **`day13_function_calling（W3）** — Function Calling 是 Agent 的基石。
    核心论点：模型决定何时调、调哪个、传什么参；你的代码执行后把结果喂回。
+5. **`day27`–`day29`（W6）** — 实时巡检 → 服务化 → 面板，**端到端闭环**。
+   核心论点：同一份领域逻辑写一次（Day27 规则引擎 + 最小二乘续航预测）、
+   包一次（Day28 后台采集线程 + `threading.Lock` + `/live/*` 快照）、
+   看一次（Day29 QTimer 轮询面板），板子到屏幕打通。
+   两个能讲深的细节：① **外推必须带 R² 门槛** —— 真实数据 R²=0.03 是纯噪声，
+   宁可输出「拒绝外推」也不报「84 秒后坠机」的假警报；② **轮询一定会漏帧** ——
+   面板上把「服务端帧数 vs 客户端采样点」并排显示，这个差值就是该换 SSE/WebSocket 的信号。
 
 ---
 
@@ -61,6 +70,7 @@ professional/
 ├── day15_rag/          day16_doc_parsing/    day17_vector_db/ day18_retrieval_tuning/  # W4 RAG
 │   day19_rag_qa_system/  day20_langchain_rag/                                                 # W4 RAG
 └── day21_langgraph_agent/  day22_agentic_rag/  day23_data_agent/  day24_multi_agent/         # W5 Agent
+    day25_api_service/  day26_client_app/  day27_live_monitor/  day28_live_api/  day29_dashboard/  # W6 服务化
 ```
 
 每个目录里的 `README.md` 都是独立的「这一天的来龙去脉」。
