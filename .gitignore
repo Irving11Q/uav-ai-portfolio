@@ -28,3 +28,14 @@ _push_helper.py
 _push_proxy_only.py
 _push_via_api.py
 _push.log
+
+# shopmind（毕设：电商 RAG 知识库问答系统）
+# 密钥、依赖、运行时数据一律不进仓库；示例文档和 .env.example 要留
+shopmind/backend/.env
+shopmind/backend/.venv/
+shopmind/backend/data/*.db
+shopmind/backend/data/chroma/
+shopmind/backend/data/uploads/
+shopmind/frontend/node_modules/
+shopmind/frontend/dist/
+shopmind/**/__pycache__/

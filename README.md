@@ -77,6 +77,17 @@ professional/
 
 ---
 
+## 另外还有一个全栈项目：`shopmind/`
+
+`professional/` 里是逐日的最小例子，`shopmind/` 是这个仓库里目前唯一一个**完整系统** ——
+毕业设计做的电商 RAG 知识库问答平台（LangChain + FastAPI + Vue3 + Chroma + 通义千问）：
+浏览器里管知识库、带引用片段的问答、混合检索 + 重排、语义缓存、RBAC 与审计、SSE 流式输出。
+
+和上面那些 day 的区别在于：day 是「把某一个点搞明白」，`shopmind` 是「把一堆点组装成能交付的东西」。
+详见 [`shopmind/README.md`](shopmind/README.md)。
+
+---
+
 ## 配套资料
 
 - `面试讲解稿.md` — 每个项目能讲清什么、踩过什么坑（带数字）、面试官可能怎么追问。

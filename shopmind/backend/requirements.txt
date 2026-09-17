@@ -1,0 +1,23 @@
+fastapi>=0.110
+uvicorn[standard]>=0.27
+sqlalchemy>=2.0
+pydantic>=2.5
+PyJWT>=2.8
+python-dotenv>=1.0
+chromadb>=0.4
+# RAG 管线
+langchain>=0.3
+langchain-community>=0.3
+langchain-openai>=0.2
+langchain-text-splitters>=0.3
+langchain-chroma>=0.1
+pypdf>=4.0
+python-docx>=1.1
+python-multipart>=0.0.9
+openpyxl>=3.1
+pandas>=2.0
+requests>=2.31
+# 阶段6：对话导出 PDF 与 OCR 预处理
+reportlab>=4.0
+pypdfium2>=4.0
+Pillow>=10.0

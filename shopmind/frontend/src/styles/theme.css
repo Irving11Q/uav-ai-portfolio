@@ -1,0 +1,245 @@
+/* ============================================================
+   全局设计 token —— 「简约清新」视觉基调
+   改这一处即可整体换肤；所有页面都引用这里的变量，不写裸色值。
+   ============================================================ */
+:root {
+  /* 主色：青绿，柔和但有辨识度 */
+  --app-primary: #2ba47c;
+  --app-primary-dark: #228363;
+  --app-primary-soft: #eaf6f2;
+  --app-primary-line: #cfe9e0;
+
+  /* 中性色阶：页面底 -> 卡片 -> 边框 -> 三级文字 */
+  --app-bg: #f5f8f7;
+  --app-card: #ffffff;
+  --app-border: #e8edeb;
+  --app-border-soft: #f0f4f2;
+  --app-text: #1f2933;
+  --app-text-2: #5b6b76;
+  --app-text-3: #97a5ae;
+
+  /* 语义色 */
+  --app-up: #2ba47c;
+  --app-down: #e2705f;
+  --app-warn: #d99a2b;
+
+  --app-radius-sm: 8px;
+  --app-radius: 12px;
+  --app-radius-lg: 16px;
+  --app-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 18px rgba(16, 24, 40, 0.045);
+  --app-shadow-hover: 0 2px 6px rgba(16, 24, 40, 0.06), 0 12px 28px rgba(16, 24, 40, 0.07);
+
+  /* 覆盖 Element Plus 主题变量（面板/按钮/表格整体跟着变） */
+  --el-color-primary: #2ba47c;
+  --el-color-primary-light-3: #6bbfa3;
+  --el-color-primary-light-5: #95d2be;
+  --el-color-primary-light-7: #bfe4d8;
+  --el-color-primary-light-8: #d5ede5;
+  --el-color-primary-light-9: #eaf6f2;
+  --el-color-primary-dark-2: #228363;
+  --el-border-radius-base: 8px;
+  --el-font-family: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--app-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 细滚动条，避免默认滚动条破坏清爽感 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #dbe4e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c6d4cf;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- 通用版式 ---------- */
+.page {
+  padding: 4px 2px 24px;
+}
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.page-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.page-sub {
+  margin: 6px 0 0;
+  color: var(--app-text-2);
+  font-size: 13px;
+}
+.muted {
+  color: var(--app-text-3);
+  font-size: 12px;
+}
+
+/* 卡片：统一圆角 + 极淡描边 + 克制阴影 */
+.app-card {
+  background: var(--app-card);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  padding: 18px;
+  box-shadow: var(--app-shadow);
+}
+/* 纵向堆叠时的默认间距。
+   注意：这条规则是按「相邻兄弟」生效的，在 display:grid 的两列布局里同样命中，
+   会把同一行的第二张卡片整体压下去 16px（顶边对不齐）。
+   凡是网格容器，都要在各自组件里用 `.容器 > .app-card + .app-card { margin-top: 0 }`
+   抵消掉，同行间距交给 gap；窄屏回落到单列时再把 margin 加回来。 */
+.app-card + .app-card {
+  margin-top: 16px;
+}
+.card-title {
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--app-primary);
+}
+
+/* 指标卡 */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 14px;
+}
+.metric {
+  background: var(--app-card);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  padding: 16px 18px;
+  box-shadow: var(--app-shadow);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.metric:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--app-shadow-hover);
+}
+.metric-label {
+  color: var(--app-text-2);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.metric-value {
+  margin-top: 8px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--app-text);
+}
+.metric-value small {
+  font-size: 13px;
+  color: var(--app-text-3);
+  margin-left: 3px;
+  font-weight: 400;
+}
+.metric-foot {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--app-text-3);
+}
+
+/* 柔和标签 */
+.soft-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: var(--app-primary-soft);
+  color: var(--app-primary-dark);
+  border: 1px solid var(--app-primary-line);
+}
+.soft-tag.gray {
+  background: #f2f5f4;
+  color: var(--app-text-2);
+  border-color: var(--app-border);
+}
+
+/* ---------- Element Plus 观感微调（不改组件逻辑，只调视觉） ---------- */
+.el-card {
+  border-radius: var(--app-radius) !important;
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow) !important;
+}
+.el-button {
+  border-radius: var(--app-radius-sm);
+  font-weight: 400;
+}
+.el-button--primary {
+  --el-button-bg-color: var(--app-primary);
+  --el-button-border-color: var(--app-primary);
+  --el-button-hover-bg-color: var(--app-primary-dark);
+  --el-button-hover-border-color: var(--app-primary-dark);
+}
+.el-input__wrapper,
+.el-textarea__inner {
+  border-radius: var(--app-radius-sm);
+  box-shadow: 0 0 0 1px var(--app-border) inset;
+}
+.el-table {
+  --el-table-border-color: var(--app-border);
+  --el-table-header-bg-color: #f8fbfa;
+  --el-table-header-text-color: var(--app-text-2);
+  font-size: 13px;
+}
+.el-table th.el-table__cell {
+  font-weight: 500;
+}
+.el-dialog {
+  border-radius: var(--app-radius) !important;
+}
+.el-tabs__item.is-active {
+  font-weight: 500;
+}
+.el-menu {
+  border-right: none !important;
+}
+.el-divider__text {
+  background: var(--app-card);
+  color: var(--app-text-3);
+  font-size: 12px;
+}
