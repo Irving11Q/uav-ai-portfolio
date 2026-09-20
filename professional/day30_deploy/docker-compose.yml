@@ -1,0 +1,41 @@
+# Day30：W6 后端服务一键编排
+#   agent  ← Day25 智能体服务（数据分析 + 手册检索 + Agent，端口 8000）
+#   live   ← Day28 实时巡检服务（后台采集 + /live/* 快照，端口 8001）
+# 面板（Day29）跑在宿主机，连 http://127.0.0.1:8001 即可。
+#
+# 用法：
+#   docker compose up --build          # 起两套服务
+#   docker compose ps                   # 看健康状态
+#   python day30_eval.py --base-url http://127.0.0.1:8000 http://127.0.0.1:8001   # 跑评测
+#   docker compose down                 # 收摊
+
+services:
+  agent:
+    build: .
+    command: ["python", "-m", "uvicorn", "day25_api_service:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    environment:
+      - DAY25_PREHEAT=1
+      # 有 Key 时 /ask 才可用；没有就优雅降级（/ask 返 503，其余接口照常）
+      - ZHIPU_API_KEY=${ZHIPU_API_KEY:-}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    restart: unless-stopped
+
+  live:
+    build: .
+    command: ["python", "-m", "uvicorn", "day28_live_api:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8001/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped

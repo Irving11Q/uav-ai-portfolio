@@ -20,7 +20,7 @@ LangGraph · pandas · matplotlib。
 | **W3 大模型 API** | `day10`–`day14` | 怎么调 LLM | 首调 DeepSeek → 自封装 Client → Function Calling（Agent 基石）→ 多模型对比 |
 | **W4 RAG 全链路** | `day15`–`day20` | 怎么让模型「不瞎编」 | 朴素 RAG → 切块策略 → Chroma 向量库 → 检索调优 → 带引用的 QA → LangChain 重写 |
 | **W5 Agent** | `day21`–`day24` | 怎么让模型「自己干活」 | 单 Agent → 工具即检索(CRAG) → 数据分析 Agent → 多 Agent 协作 |
-| **W6 服务化** | `day25`–`day29` | 怎么把原型变成系统 | FastAPI 服务化 → 桌面客户端 → 实时巡检(规则+续航预测) → 后台采集服务 → 实时面板 |
+| **W6 服务化** | `day25`–`day30` | 怎么把原型变成系统 | FastAPI 服务化 → 桌面客户端 → 实时巡检(规则+续航预测) → 后台采集服务 → 实时面板 → 一键部署+评测集 |
 
 **贯穿线索**：W2 那 23 行真实串口飞行日志、W4 那本《电池手册》，被 W3/W4/W5 反复复用——
 同一个数据，从「画出来」到「喂给模型回答」，这就是一个 AI 应用从原型到落地的全过程。
@@ -40,7 +40,7 @@ LangGraph · pandas · matplotlib。
    核心论点：切块质量决定检索上限；守住统一检索接口，换真检索只改一行；实测 Top-1 5/6、Top-3 6/6、离题拒答 3/3。
 4. **`day13_function_calling（W3）** — Function Calling 是 Agent 的基石。
    核心论点：模型决定何时调、调哪个、传什么参；你的代码执行后把结果喂回。
-5. **`day27`–`day29`（W6）** — 实时巡检 → 服务化 → 面板，**端到端闭环**。
+5. **`day27`–`day30`（W6）** — 实时巡检 → 服务化 → 面板 → 部署+评测，**端到端闭环收官**。
    核心论点：同一份领域逻辑写一次（Day27 规则引擎 + 最小二乘续航预测）、
    包一次（Day28 后台采集线程 + `threading.Lock` + `/live/*` 快照）、
    看一次（Day29 QTimer 轮询面板），板子到屏幕打通。
@@ -70,7 +70,7 @@ professional/
 ├── day15_rag/          day16_doc_parsing/    day17_vector_db/ day18_retrieval_tuning/  # W4 RAG
 │   day19_rag_qa_system/  day20_langchain_rag/                                                 # W4 RAG
 └── day21_langgraph_agent/  day22_agentic_rag/  day23_data_agent/  day24_multi_agent/         # W5 Agent
-    day25_api_service/  day26_client_app/  day27_live_monitor/  day28_live_api/  day29_dashboard/  # W6 服务化
+    day25_api_service/  day26_client_app/  day27_live_monitor/  day28_live_api/  day29_dashboard/  day30_deploy/  # W6 服务化（收官：部署+评测）
 ```
 
 每个目录里的 `README.md` 都是独立的「这一天的来龙去脉」。

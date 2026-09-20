@@ -23,6 +23,9 @@ _out_day27/
 # Day28 实时服务产物（巡检报告）
 _out_day28/
 
+# Day30 评测产物（评测报告 json，跑一次就有一份）
+_out_day30/
+
 # 推送辅助脚本（含本机凭据读取逻辑，只在本地用，不进仓库）
 _push_helper.py
 _push_proxy_only.py

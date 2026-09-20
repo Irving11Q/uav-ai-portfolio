@@ -1,0 +1,10 @@
+# Day30 部署依赖（与学习环境 chroma-env 中实测可用的版本一致）
+# 实测组合：fastapi 0.141 / uvicorn 0.52 / langchain-core 1.6 / langgraph 1.2 / sentence-transformers 6.0
+fastapi>=0.110
+uvicorn>=0.27
+pydantic>=2.5
+pandas>=2.0
+numpy>=1.24
+sentence-transformers>=2.5
+langchain-core>=0.3
+langgraph>=0.2
