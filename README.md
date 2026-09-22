@@ -21,6 +21,7 @@ LangGraph · pandas · matplotlib。
 | **W4 RAG 全链路** | `day15`–`day20` | 怎么让模型「不瞎编」 | 朴素 RAG → 切块策略 → Chroma 向量库 → 检索调优 → 带引用的 QA → LangChain 重写 |
 | **W5 Agent** | `day21`–`day24` | 怎么让模型「自己干活」 | 单 Agent → 工具即检索(CRAG) → 数据分析 Agent → 多 Agent 协作 |
 | **W6 服务化** | `day25`–`day30` | 怎么把原型变成系统 | FastAPI 服务化 → 桌面客户端 → 实时巡检(规则+续航预测) → 后台采集服务 → 实时面板 → 一键部署+评测集 |
+| **W7 综合** | `day31` | 把前面串成会干活的 Agent | 实时巡检告警 → 运维智能体(查手册RAG+分析数据) → 结构化处置单闭环 |
 
 **贯穿线索**：W2 那 23 行真实串口飞行日志、W4 那本《电池手册》，被 W3/W4/W5 反复复用——
 同一个数据，从「画出来」到「喂给模型回答」，这就是一个 AI 应用从原型到落地的全过程。
@@ -70,7 +71,7 @@ professional/
 ├── day15_rag/          day16_doc_parsing/    day17_vector_db/ day18_retrieval_tuning/  # W4 RAG
 │   day19_rag_qa_system/  day20_langchain_rag/                                                 # W4 RAG
 └── day21_langgraph_agent/  day22_agentic_rag/  day23_data_agent/  day24_multi_agent/         # W5 Agent
-    day25_api_service/  day26_client_app/  day27_live_monitor/  day28_live_api/  day29_dashboard/  day30_deploy/  # W6 服务化（收官：部署+评测）
+    day25_api_service/  day26_client_app/  day27_live_monitor/  day28_live_api/  day29_dashboard/  day30_deploy/  day31_maintenance/  # W6 服务化 + W7 综合（运维智能体闭环）
 ```
 
 每个目录里的 `README.md` 都是独立的「这一天的来龙去脉」。

@@ -26,6 +26,9 @@ _out_day28/
 # Day30 评测产物（评测报告 json，跑一次就有一份）
 _out_day30/
 
+# Day31 运维智能体产物（若跑 --demo 本地生成处置单 jsonl）
+_out_day31/
+
 # 推送辅助脚本（含本机凭据读取逻辑，只在本地用，不进仓库）
 _push_helper.py
 _push_proxy_only.py
